@@ -37,6 +37,7 @@ function toggleLikeTalkDetailActionCreator(userId) {
 
 function asyncReceiveTalkDetail(talkId) {
   return async (dispatch) => {
+    dispatch(showLoading());
     dispatch(clearTalkDetailActionCreator());
 
     try {
@@ -45,14 +46,16 @@ function asyncReceiveTalkDetail(talkId) {
     } catch (error) {
       alert(error.message);
     }
+
+    dispatch(hideLoading());
   };
 }
 
 function asyncToggleLikeTalkDetail() {
   return async (dispatch, getState) => {
+    dispatch(showLoading());
     const { authUser, talkDetail } = getState();
     dispatch(toggleLikeTalkDetailActionCreator(authUser.id));
-    dispatch(showLoading());
 
     try {
       await api.toggleLikeTalk(talkDetail.id);
