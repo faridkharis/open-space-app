@@ -47,7 +47,7 @@ function asyncReceiveTalkDetail(talkId) {
   };
 }
 
-function asyncToogleLikeTalkDetail() {
+function asyncToggleLikeTalkDetail() {
   return async (dispatch, getState) => {
     const { authUser, talkDetail } = getState();
     dispatch(toggleLikeTalkDetailActionCreator(authUser.id));
@@ -66,5 +66,5 @@ export {
   clearTalkDetailActionCreator,
   toggleLikeTalkDetailActionCreator,
   asyncReceiveTalkDetail,
-  asyncToogleLikeTalkDetail,
+  asyncToggleLikeTalkDetail,
 };
